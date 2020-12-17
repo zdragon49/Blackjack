@@ -61,7 +61,7 @@ public class BlackJack {
             wager = in.nextInt();
             if (wager > chips) {
                 System.out.println("Sorry, you only have " + chips + " chips remaining, but you wagered " + wager + " chips.");
-            } if(wager > 25) {
+            }if(wager > 25) {
                 System.out.println("Sorry, you can only wager 25 or less.");
             }
         } while (wager < 1 || wager > chips || wager > 25);
@@ -119,24 +119,23 @@ public class BlackJack {
             }
         }
     }
-
     private void endRound() {
         showHand("player");
         showHand("computer");
 
         if (playerScore > 21) {
-            System.out.println("Sorry, your score has gone over a 21 and you have lost this round.");
+            System.out.println("Sorry, your score has gone over a 21 and you have lost this round. :( BOOHOO!");
             chips -= (wager);
             if (chips <= 0) {
                 end();
             }
         } else if(computerScore > 21) {
-            System.out.println("The computer has gone over 21 so you have won this round.");
+            System.out.println("The computer has gone over 21 so you have won this round. YAY!");
             chips += wager;
         } else if (computerScore == playerScore && playerScore <= 21) {
-            System.out.println("You have tied with the computer this round.");
+            System.out.println("You have tied with the computer this round. :|");
         } else if (playerScore == 21 && player.hand.size() == 2) {
-            System.out.println("Congratulations, that is a BlackJack. You have won this round.");
+            System.out.println("Congratulations, that is a BlackJack. You have won this round. YAY!");
             chips += (int) (wager * 1.5);
         } else if (computerScore > playerScore && computerScore <= 21) {
             System.out.println("You have lost this round " + playerScore + " to " + computerScore + ".");
@@ -176,9 +175,9 @@ public class BlackJack {
     }
     private void end() {
         if (chips <= 0) {
-            System.out.println("You ran out of chips and lost.");
+            System.out.println("You ran out of chips and sadly you lost.");
         } else {
-            System.out.println("You ended up with " + chips + " chips. Good job!");
+            System.out.println("You ended up with " + chips + " chips. Amazing job!");
         }
         System.exit(0);
     }
