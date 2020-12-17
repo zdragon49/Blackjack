@@ -55,15 +55,13 @@ public class BlackJack {
             System.out.println("Your total chips right now: " + chips);
             if(chips > 0) {
                 System.out.println("How many chips would you like to wager (Min: 1, Max: " + chipMaxNum + " )");
-            }
-            else {
+            } else {
                 System.out.println("How many chips would you like to wager (Min: 0, Max: " + chipMaxNum + " )");
             }
             wager = in.nextInt();
             if (wager > chips) {
                 System.out.println("Sorry, you only have " + chips + " chips remaining, but you wagered " + wager + " chips.");
-            }
-            if(wager > 25) {
+            } if(wager > 25) {
                 System.out.println("Sorry, you can only wager 25 or less.");
             }
         } while (wager < 1 || wager > chips || wager > 25);
@@ -81,7 +79,6 @@ public class BlackJack {
         playerScore = player.findScore();
         computerScore = computer.findScore();
     }
-
     private void initializeDeck() {
         deck = new ArrayList<>(52);
 
@@ -98,8 +95,7 @@ public class BlackJack {
             while (action.equals("H") == false && action.equals("S") == false) {
                 System.out.println("Hit (H) or Stand (S)");
                 action = in.nextLine().toUpperCase();
-            }
-            if (action.equals("H")) {
+            } if (action.equals("H")) {
                 player.takeCard(deck.remove(0));
                 playerScore = player.findScore();
                 if (playerScore < 21) {
