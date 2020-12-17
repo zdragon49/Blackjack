@@ -15,6 +15,7 @@ public class BlackJack {
     private int chips = -1;
     private int wager;
     private boolean turn = true;
+    private int count = 0;
 
     public BlackJack() {
         this.player = new Player();
@@ -43,19 +44,29 @@ public class BlackJack {
         }
     }
     private void wager() {
+        int chipMaxNum = chips;
+        if(chips >= 25) {
+            chipMaxNum = 25;
+        } else {
+            chipMaxNum = chips;
+        }
+
         do {
             System.out.println("Your total chips right now: " + chips);
             if(chips > 0) {
-                System.out.println("How many chips would you like to wager (Min: 1, Max: " + chips + " )");
+                System.out.println("How many chips would you like to wager (Min: 1, Max: " + chipMaxNum + " )");
             }
             else {
-                System.out.println("How many chips would you like to wager (Min: 0, Max: " + chips + " )");
+                System.out.println("How many chips would you like to wager (Min: 0, Max: " + chipMaxNum + " )");
             }
             wager = in.nextInt();
             if (wager > chips) {
                 System.out.println("Sorry, you only have " + chips + " chips remaining, but you wagered " + wager + " chips.");
             }
-        } while (wager < 1 || wager > chips);
+            if(wager > 25) {
+                System.out.println("Sorry, you can only wager 25 or less.");
+            }
+        } while (wager < 1 || wager > chips || wager > 25);
     }
     public void shuffleDeal() {
         if (deck == null) {
@@ -176,7 +187,7 @@ public class BlackJack {
         System.exit(0);
     }
     public static void main(String[] args) {
-        System.out.println("Let's Play Blackjack!");
+        System.out.println("Ready to Gamble! Let's play BLACKJACK!");
         new BlackJack().play();
     }
 }
